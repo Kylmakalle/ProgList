@@ -1,9 +1,6 @@
 #include <iostream> 
 using namespace std;
 
-#include "stdafx.h"
-#include <iostream>
-using namespace std;
 struct Node {
 	int info;
 	Node*link;
@@ -33,8 +30,6 @@ int main()
 			cin >> x;
 			if (x == 0)
 				break;
-			if (x > 0)
-				continue;
 
 			p = new Node;
 			Back->link = p;
@@ -56,14 +51,15 @@ int main()
 	p = Head;
 	while (p != NULL) {
 		if (p->info > 0) {
-			p = Head->link;
-			delete Head; //deleting positive elements TODO
+			p = p->link;
+			delete Head;			//deleting positive elements
 			Head = p;
 		}
 		else {
-
+			p = p->link;
 		}
 	}
+	p = Head;
 
 	while (p != NULL) {
 		cout << p->info << " "; //output
