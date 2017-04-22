@@ -61,7 +61,7 @@ int main()
 				p = p->link;
 				delete Head;
 				Head = p;
-				last = Head;
+				last = Head;                       //deleting positive elements
 			}
 
 			else {
