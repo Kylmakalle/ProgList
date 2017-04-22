@@ -11,6 +11,7 @@ int main()
 	Node*Head = NULL;
 	Node*Back;
 	Node*p;
+	Node*last;
 	int x;
 
 	cin >> x;
@@ -49,16 +50,33 @@ int main()
 
 
 	p = Head;
+	last = Head;  //last nonpositive element 
+
 	while (p != NULL) {
+
 		if (p->info > 0) {
-			p = p->link;
-			delete Head;			//deleting positive elements
-			Head = p;
+
+			if (p == Head) {
+
+				p = p->link;
+				delete Head;
+				Head = p;
+				last = Head;
+			}
+
+			else {
+				p = p->link;
+				delete last->link;
+				last->link = p;
+			}
 		}
 		else {
+			last = p;
 			p = p->link;
+			last->link = p;
 		}
 	}
+
 	p = Head;
 
 	while (p != NULL) {
