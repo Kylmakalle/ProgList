@@ -1,18 +1,20 @@
-#include <stdafx.h>
-#include <iostream.h>
+#include <iostream>
 using namespace std;
+
 struct x
 {
 	int p;
 	x* next;
 	x* pred;
 };
+
 void Sort(x *y, x *t)
 {
 	y = t;
-	while (y->next != 0)
+
+	while (y->next != NULL)
 	{
-		if ((y->p)>(y->next->p))
+		if ((y->p) > (y->next->p))
 		{
 			swap(y->p, y->next->p);
 			Sort(y, t);
@@ -21,12 +23,14 @@ void Sort(x *y, x *t)
 			y = y->next;
 	}
 };
+
 int main()
 {
 	int n(0), k;
-	x *t, *h, *g, *l;
+	x *t, *h, *g;
 	t = new x;
 	g = t;
+
 	while (1)
 	{
 		cin >> k;
@@ -34,7 +38,7 @@ int main()
 			return 0;
 		if (k == 0)
 		{
-			g->next = 0;
+			g->next = NULL;
 			break;
 		}
 		else
@@ -49,12 +53,22 @@ int main()
 			n++;
 		}
 	}
+
 	g = t;
+
 	Sort(g, t);
-	g = t;
-	while (g->next != 0)
+
+	g = t->next;
+
+	while (g != NULL)
 	{
 		cout << g->p << " ";
 		g = g->next;
+	}
+
+	while (t) {
+		g = t->next;
+		delete t; //deleting memory
+		t = g;
 	}
 }
