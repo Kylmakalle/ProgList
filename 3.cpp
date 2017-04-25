@@ -7,6 +7,7 @@ struct x
 	x* pred;
 };
 int z;
+
 void delspisok(x *y)
 {
 	if (y->next == 0)
@@ -16,16 +17,20 @@ void delspisok(x *y)
 }
 void f(x *y)
 {
-	if (y->next == 0)
+	if (y->next == 0) {
+		cout << "Node count " << z << endl;
 		return;
-	if (y->p > 0)
+	}
+
+	if (y->p > 0) {
 		z++;
-	f(y->next);
+		f(y->next);
+	}
 };
 int main()
 {
-	int n(0), i, j, k;
-	x *t, *h, *g, *l;
+	int n(0), k;
+	x *t, *h, *g;
 	t = new x;
 	g = t;
 	while (1)
@@ -50,6 +55,7 @@ int main()
 			n++;
 		}
 	}
+	f(t);
 
 	delspisok(t);
 
