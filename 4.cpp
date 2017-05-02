@@ -18,14 +18,10 @@ void search(Node *&p, int x)
 	if (p)
 	{
 		if (p->info > x)
-		{
 			search(p->left, x);
-		}
 		else
 			if (p->info < x)
 				search(p->right, x);
-			else
-				cout << "Haha";
 	}
 	else
 	{
